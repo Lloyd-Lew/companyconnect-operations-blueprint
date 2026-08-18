@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "CompanyConnect Operations Blueprint",
+    "description": "Synthetic-data-only API collection for the public CompanyConnect Operations Blueprint reference implementation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "lifecycleId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Create synthetic lifecycle",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Idempotency-Key", "value": "postman-synthetic-lifecycle-001" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"companyAlias\": \"Northstar Services\",\n  \"contactAlias\": \"Alex Example\",\n  \"employeeBand\": \"51-200\",\n  \"requestedService\": \"automation\",\n  \"processPain\": \"manual_handoffs\",\n  \"syntheticDataConfirmed\": true\n}"
+        },
+        "url": "{{baseUrl}}/v1/lifecycles"
+      }
+    },
+    {
+      "name": "Synthetic KPIs",
+      "request": { "method": "GET", "url": "{{baseUrl}}/v1/kpis" }
+    }
+  ]
+}

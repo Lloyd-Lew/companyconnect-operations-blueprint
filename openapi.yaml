@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: CompanyConnect Operations Blueprint API
+  version: 1.0.0
+  description: |
+    Client-safe reference API for a synthetic AI-assisted business operating system.
+    It accepts synthetic data only, uses in-memory adapters, and is not a production service.
+servers:
+  - url: http://localhost:3000
+    description: Local reference implementation
+paths:
+  /health:
+    get:
+      summary: Check process reachability
+      responses:
+        "200":
+          description: Service is reachable
+  /status:
+    get:
+      summary: Inspect the reference implementation boundary
+      responses:
+        "200":
+          description: Synthetic and in-memory operating mode
+  /v1/lifecycles:
+    post:
+      summary: Start an idempotent synthetic lifecycle
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema:
+            type: string
+          description: Caller-generated key used to prevent duplicate lifecycle creation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SyntheticLead"
+      responses:
+        "201":
+          description: New synthetic lifecycle created
+        "200":
+          description: Existing lifecycle replayed for the supplied idempotency key
+        "400":
+          $ref: "#/components/responses/ValidationError"
+  /v1/lifecycles/{lifecycleId}/approve:
+    post:
+      summary: Approve a synthetic quote path and trigger onboarding, project, and invoice states
+      parameters:
+        - $ref: "#/components/parameters/LifecycleId"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                simulateNotificationFailure:
+                  type: boolean
+                  default: false
+      responses:
+        "200":
+          description: Lifecycle transitioned to operational or retry-ready state
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Lifecycle was not awaiting approval
+  /v1/support-requests:
+    post:
+      summary: Process a synthetic support request with bounded disposition or human escalation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lifecycleId, message, simulatedKnowledgeMatch]
+              properties:
+                lifecycleId:
+                  type: string
+                  format: uuid
+                message:
+                  type: string
+                  description: Synthetic message only; raw content is not placed in audit metadata.
+                simulatedKnowledgeMatch:
+                  type: boolean
+      responses:
+        "201":
+          description: Support disposition produced
+  /v1/kpis:
+    get:
+      summary: Retrieve synthetic lifecycle counters
+      responses:
+        "200":
+          description: In-memory synthetic KPI snapshot
+  /v1/audit-events:
+    get:
+      summary: Retrieve redacted synthetic audit events
+      responses:
+        "200":
+          description: Structured audit event list
+components:
+  parameters:
+    LifecycleId:
+      in: path
+      name: lifecycleId
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    ValidationError:
+      description: Input did not satisfy the reference API contract
+    NotFound:
+      description: Requested lifecycle was not found
+  schemas:
+    SyntheticLead:
+      type: object
+      required:
+        - companyAlias
+        - contactAlias
+        - employeeBand
+        - requestedService
+        - processPain
+        - syntheticDataConfirmed
+      properties:
+        companyAlias:
+          type: string
+          example: Northstar Services
+        contactAlias:
+          type: string
+          example: Alex Example
+        employeeBand:
+          type: string
+          enum: ["1-10", "11-50", "51-200", "201+"]
+        requestedService:
+          type: string
+          enum: [crm, automation, ai, integration, operations]
+        processPain:
+          type: string
+          enum: [manual_handoffs, slow_follow_up, reporting_gap, data_reentry]
+        syntheticDataConfirmed:
+          type: boolean
+          const: true

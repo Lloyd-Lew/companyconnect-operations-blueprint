@@ -1,0 +1,12 @@
+services:
+  operations-blueprint:
+    build: .
+    environment:
+      PORT: 3000
+      DEMO_MODE: "true"
+      LOG_LEVEL: info
+    ports:
+      - "3000:3000"
+    read_only: true
+    tmpfs:
+      - /tmp

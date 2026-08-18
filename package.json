@@ -1,0 +1,41 @@
+{
+  "name": "companyconnect-operations-blueprint",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Client-safe reference implementation for AI-assisted lead-to-cash, operations, support, KPI, and audit workflows.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "check": "tsc --noEmit && eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "benchmark": "tsx scripts/benchmark.ts",
+    "audit:production": "npm audit --omit=dev --audit-level=high",
+    "sbom": "npm sbom --sbom-format cyclonedx --omit=dev"
+  },
+  "dependencies": {
+    "express": "4.22.2",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@types/express": "5.0.1",
+    "@types/node": "22.15.2",
+    "@types/supertest": "6.0.2",
+    "eslint": "9.39.5",
+    "globals": "16.2.0",
+    "prettier": "3.5.3",
+    "supertest": "7.1.3",
+    "tsx": "4.19.3",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.31.0",
+    "vitest": "3.2.7"
+  }
+}
