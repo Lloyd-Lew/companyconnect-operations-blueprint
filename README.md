@@ -110,17 +110,17 @@ Read [operational boundaries and limitations](docs/operational-boundaries.md) be
 
 ## Technical due diligence
 
-| Question                                  | Evidence                                                                                                                    |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| How is the system structured?             | [Architecture](docs/architecture.md)                                                                                        |
-| What are the API contracts?               | [OpenAPI specification](openapi.yaml) and [API guide](docs/api.md)                                                          |
-| How are security and data safety handled? | [Security policy](SECURITY.md), [threat model](docs/threat-model.md), and [data boundaries](docs/operational-boundaries.md) |
-| How is quality checked?                   | [GitHub Actions](../../actions), CodeQL, tests, strict TypeScript, linting, formatting, and dependency audit                |
-| Can it be reproduced?                     | [Developer runbook](docs/runbook.md), Docker assets, dev container, Postman collection, and demo session                    |
-| What is not represented?                  | [Limitations](docs/operational-boundaries.md)                                                                               |
+| Question                                  | Evidence                                                                                                                                                                |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| How is the system structured?             | [Architecture](docs/architecture.md)                                                                                                                                    |
+| What are the API contracts?               | [OpenAPI specification](openapi.yaml) and [API guide](docs/api.md)                                                                                                      |
+| How are security and data safety handled? | [Security policy](SECURITY.md), [threat model](docs/threat-model.md), and [data boundaries](docs/operational-boundaries.md)                                             |
+| How is quality checked?                   | [GitHub Actions](https://github.com/Lloyd-Lew/companyconnect-operations-blueprint/actions), CodeQL, tests, strict TypeScript, linting, formatting, and dependency audit |
+| Can it be reproduced?                     | [Developer runbook](docs/runbook.md), Docker assets, dev container, Postman collection, and demo session                                                                |
+| What is not represented?                  | [Limitations](docs/operational-boundaries.md)                                                                                                                           |
 
 ## Related CompanyConnect evidence
 
-The [CompanyConnect Systems Portfolio](https://github.com/Lloyd-Lew/companyconnect-systems-portfolio) explains the business problems and service paths behind this technical proof. The [Lead-to-Quote Automation Demonstrator](https://github.com/Lloyd-Lew/lead-to-quote-automation-demo) is a more focused API example. The [CompanyConnect Engineering Hub](https://lloyd-lew.github.io/companyconnect-engineering-hub/) will provide a cross-repository technical proof and trust route once published.
+The [CompanyConnect Systems Portfolio](https://github.com/Lloyd-Lew/companyconnect-systems-portfolio) explains the business problems and service paths behind this technical proof. The [Lead-to-Quote Automation Demonstrator](https://github.com/Lloyd-Lew/lead-to-quote-automation-demo) is a more focused API example. A CompanyConnect Engineering Hub will be linked here only after its public deployment has been verified.
 
 If your organisation is evaluating CRM, workflow automation, integrations, dashboards, or AI-enabled operations, [book a technical discovery call](https://calendar.app.google/4SoivAXFkCpeQLVw5?utm_source=github&utm_medium=technical_proof&utm_campaign=operations_blueprint) or start with the [Operational Bottleneck Brief](https://github.com/Lloyd-Lew/companyconnect-systems-portfolio/blob/main/templates/operational-bottleneck-brief.md).
