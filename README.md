@@ -89,6 +89,16 @@ npm run benchmark
 
 The benchmark is deliberately local and synthetic. It prints machine-specific in-memory execution timing and does **not** represent production throughput, customer volume, platform uptime, cost, or AI accuracy.
 
+### Verify the public API contract
+
+The API surface is described in [`openapi.yaml`](openapi.yaml). Run the focused contract-alignment check after changing a public route or contract documentation:
+
+```bash
+npm run verify:contract
+```
+
+This check exercises every documented public route against the synthetic reference implementation and confirms that the documented idempotency and synthetic-data boundaries remain explicit. It is not a formal OpenAPI conformance certification or production integration test.
+
 ## Architecture and engineering evidence
 
 | Concern                | Implementation evidence                                                                                                                        |
@@ -121,6 +131,6 @@ Read [operational boundaries and limitations](docs/operational-boundaries.md) be
 
 ## Related CompanyConnect evidence
 
-The [CompanyConnect Systems Portfolio](https://github.com/Lloyd-Lew/companyconnect-systems-portfolio) explains the business problems and service paths behind this technical proof. The [Lead-to-Quote Automation Demonstrator](https://github.com/Lloyd-Lew/lead-to-quote-automation-demo) is a more focused API example. A CompanyConnect Engineering Hub will be linked here only after its public deployment has been verified.
+The [CompanyConnect Systems Portfolio](https://github.com/Lloyd-Lew/companyconnect-systems-portfolio) explains the business problems and service paths behind this technical proof. The [Lead-to-Quote Automation Demonstrator](https://github.com/Lloyd-Lew/lead-to-quote-automation-demo) is a more focused API example. The deployed [CompanyConnect Engineering Hub](https://lloyd-lew.github.io/companyconnect-engineering-hub/) provides a concise technical proof, trust, and due-diligence route across the public ecosystem.
 
 If your organisation is evaluating CRM, workflow automation, integrations, dashboards, or AI-enabled operations, [book a technical discovery call](https://calendar.app.google/4SoivAXFkCpeQLVw5?utm_source=github&utm_medium=technical_proof&utm_campaign=operations_blueprint) or start with the [Operational Bottleneck Brief](https://github.com/Lloyd-Lew/companyconnect-systems-portfolio/blob/main/templates/operational-bottleneck-brief.md).

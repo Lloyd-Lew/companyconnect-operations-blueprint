@@ -1,6 +1,6 @@
 {
   "name": "companyconnect-operations-blueprint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Client-safe reference implementation for AI-assisted lead-to-cash, operations, support, KPI, and audit workflows.",
   "type": "module",
@@ -17,6 +17,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "benchmark": "tsx scripts/benchmark.ts",
+    "verify:contract": "vitest run test/openapiContract.test.ts",
     "audit:production": "npm audit --omit=dev --audit-level=high",
     "sbom": "npm sbom --sbom-format cyclonedx --omit=dev"
   },
